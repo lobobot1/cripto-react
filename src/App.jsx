@@ -1,6 +1,7 @@
-import styled from '@emotion/styled'
-import ImagenCripto from './img/imagen-criptos.png'
-import { Formulario } from './components/Formulario'
+import styled from "@emotion/styled";
+import ImagenCripto from "./img/imagen-criptos.png";
+import { Formulario } from "./components/Formulario";
+import { useEffect, useState } from "react";
 
 const Contenedor = styled.div`
   max-width: 900px;
@@ -11,7 +12,7 @@ const Contenedor = styled.div`
     grid-template-columns: repeat(2, 1fr);
     column-gap: 2rem;
   }
-`
+`;
 
 const Heading = styled.h1`
   font-family: 'Noto Sans mono', monospace;
@@ -30,26 +31,30 @@ const Heading = styled.h1`
     display: block;
     margin: 0 auto;
   }
-`
+`;
 const Imagen = styled.img`
   max-width: 400px;
   width: 80%;
   margin: 100px auto 0 auto;
   display: block;
-`
+`;
 
 function App() {
- 
+  const [monedas, setMonedas] = useState({});
+
+  useEffect(() => {
+    if (Object.keys(monedas).length === 0) return;
+  }, [monedas]);
 
   return (
     <Contenedor>
       <Imagen src={ImagenCripto} alt="Imagen Cripto" />
       <div>
         <Heading>Cotiza criptomonedas al instante</Heading>
-        <Formulario />
+        <Formulario setMonedas={setMonedas} />
       </div>
     </Contenedor>
-  )
+  );
 }
 
-export default App
+export default App;

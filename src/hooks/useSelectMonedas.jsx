@@ -28,7 +28,6 @@ const Select = styled.select`
  * @returns
  */
 export const useSelectMonedas = (label, opciones) => {
-
   const [state, setState] = useState("");
 
   const SelectMonedas = () => (
